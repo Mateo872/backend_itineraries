@@ -102,7 +102,7 @@ export const editUser = async (req, res) => {
 
 export const addFavorites = async (req, res) => {
   const { userID } = req.params;
-  const { newFavorites } = req.body;
+  const { newFavoritesIds } = req.body;
   try {
     const user = await User.findById(userID);
 
@@ -110,12 +110,12 @@ export const addFavorites = async (req, res) => {
       return res.status(404).json({ error: "User not found." });
     }
 
-    const exist = user.favorites.includes(newFavorites);
+    const exist = user.favorites.includes(newFavoritesIds);
 
     if (!exist) {
-      user.favorites.push(newFavorites);
+      user.favorites.push(newFavoritesIds);
     } else {
-      user.favorites = user.favorites.filter((fav) => fav !== newFavorites);
+      user.favorites = user.favorites.filter((fav) => fav !== newFavoritesIds);
     }
 
     await user.save();
