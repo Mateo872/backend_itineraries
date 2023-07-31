@@ -33,7 +33,7 @@ export const createUser = async (req, res) => {
   try {
     const { email } = req.body;
 
-    let user = await Usuario.findOne({ email });
+    let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
         message: "The user already exists",
