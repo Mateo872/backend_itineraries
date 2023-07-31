@@ -51,6 +51,13 @@ const itinerarySchema = new Schema({
   language: { type: String, required: true },
   years: { type: String, required: true },
   favorite: { type: Boolean, required: true },
+  thingsToDoInCity: {
+    type: String,
+    required: true,
+    minLength: 10,
+    maxLength: 800,
+    required: true,
+  },
 });
 
 const Itinerary = model("itinerarie", itinerarySchema);
