@@ -11,8 +11,8 @@ const router = Router();
 
 router.route("/users").get(getUsers).post(login);
 
-router.route("/user/new").post(createUser);
+router.route("/users/new").post(createUser);
 
-router.route("/user/:id").get(getUser);
+router.route("/users/:id").get(getUser);
 
 export default router;
