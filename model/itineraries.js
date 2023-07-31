@@ -55,7 +55,6 @@ const itinerarySchema = new Schema({
     type: String,
     required: true,
     minLength: 10,
-    maxLength: 800,
     required: true,
   },
 });
