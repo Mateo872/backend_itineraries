@@ -85,6 +85,21 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const editUser = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, req.body);
+
+    res.status(200).json({
+      mensaje: "User edited successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      message: "Error when trying to edit the user",
+    });
+  }
+};
+
 export const addFavorites = async (req, res) => {
   const { userID } = req.params;
   const { newFavorites } = req.body;
@@ -92,7 +107,7 @@ export const addFavorites = async (req, res) => {
     const user = await User.findById(userID);
 
     if (!user) {
-      return res.status(404).json({ error: "Usuario no encontrado." });
+      return res.status(404).json({ error: "User not found." });
     }
 
     const exist = user.favorites.includes(newFavorites);
