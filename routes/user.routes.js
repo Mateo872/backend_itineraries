@@ -13,6 +13,6 @@ router.route("/users").get(getUsers).post(login);
 
 router.route("/users/new").post(createUser);
 
-router.route("/users/:id").get(getUser);
+router.route("/users/:id").get(getUser).put(getUser);
 
 export default router;
