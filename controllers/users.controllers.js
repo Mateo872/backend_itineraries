@@ -110,12 +110,14 @@ export const addFavorites = async (req, res) => {
       return res.status(404).json({ error: "User not found." });
     }
 
-    const exist = user.favorites.includes(newFavoritesIds);
+    const exist = newFavoritesIds.some((id) => user.favorites.includes(id));
 
     if (!exist) {
-      user.favorites.push(newFavoritesIds);
+      user.favorites = [...user.favorites, ...newFavoritesIds];
     } else {
-      user.favorites = user.favorites.filter((fav) => fav !== newFavoritesIds);
+      user.favorites = user.favorites.filter(
+        (fav) => !newFavoritesIds.includes(fav)
+      );
     }
 
     await user.save();
