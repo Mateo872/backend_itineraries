@@ -15,7 +15,7 @@ export const login = async (req, res) => {
     res.status(200).json({
       message: "Created user",
       uid: user._id,
-      name: user.name,
+      user: user.name,
       email: user.email,
       image: user.image,
       favorites: user.favorites,
@@ -46,7 +46,7 @@ export const createUser = async (req, res) => {
     res.status(201).json({
       status: user.status,
       password: user.password,
-      name: user.name,
+      user: user.name,
       email: user.email,
       image: user.image,
       role: user.role,
