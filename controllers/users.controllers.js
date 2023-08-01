@@ -15,7 +15,7 @@ export const login = async (req, res) => {
     res.status(200).json({
       message: "Created user",
       uid: user._id,
-      user: user.name,
+      name: user.name,
       email: user.email,
       image: user.image,
       favorites: user.favorites,
